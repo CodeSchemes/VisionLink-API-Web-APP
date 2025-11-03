@@ -6,11 +6,14 @@ body{
     min-width: 100px;
     max-width: 1000px;
 
+    h1 { 
+        background-color: white;
+        margin: 5px 0px;
+    }
+
     table, th, td {
         border: 1px solid;
+        
     }
 }
 
-h1 { 
-    background-color: white;
-}

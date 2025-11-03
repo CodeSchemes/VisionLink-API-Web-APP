@@ -6,10 +6,10 @@ body {
   min-width: 100px;
   max-width: 1000px;
 }
+body h1 {
+  background-color: white;
+  margin: 5px 0px;
+}
 body table, body th, body td {
   border: 1px solid;
-}
-
-h1 {
-  background-color: white;
 }/*# sourceMappingURL=styles.css.map */
