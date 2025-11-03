@@ -1,19 +1,16 @@
-body {
-    width: 500px;
-    height: auto;
+body{
+    background-color: tan;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-width: 100px;
+    max-width: 1000px;
 
-
-
-
+    table, th, td {
+        border: 1px solid;
+    }
 }
 
-table{
-    background-color: bisque;
-
-   
-}
-
-th{ 
-    border: black;
-    border-width: 5px;
+h1 { 
+    background-color: white;
 }
