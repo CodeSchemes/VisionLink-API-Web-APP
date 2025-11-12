@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../static/styles.css">
+        <script src="script.js" ></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="http://localhost:5000/">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" tabindex="1" href="http://localhost:5000/sign_in">Login</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+
+            <div class="mb-3">
+                <form>
+                    <label for="uname" class="form-label"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" class="form-control" required>
+
+                    <label for="psw" class="form-label"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" class="form-control" required>
+
+                    <button type="submit">Login</button>
+                </form>
+                
+            </div>
+
+
+    </body>
+</html>

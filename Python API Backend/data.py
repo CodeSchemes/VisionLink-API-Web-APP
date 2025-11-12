@@ -99,8 +99,6 @@ def pull_fault_codes(params='', headers=None):
     
 conn = http.client.HTTPSConnection('services.cat.com')
 try:
-    data = pull_fault_codes()
-    print(data)
     conn.close()
 except Exception as e:
     print(e)

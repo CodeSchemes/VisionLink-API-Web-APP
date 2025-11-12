@@ -68,7 +68,7 @@ async function loadData(url, table){
         let rows = []
         let indexToAdd = [] 
             switch(url){
-                case "http://localhost:5000/":
+                case "http://localhost:5000/data":
                     headersFormatted = ["Asset ID", "Serial Number", "Hours"];
                     rows = [];
                     indexToAdd = [15,14,24];
@@ -88,7 +88,7 @@ async function loadData(url, table){
                     console.log(rows)  
                     break;
                 
-                case "http://localhost:5000/faults":
+                case "http://localhost:5000/data/faults":
                     headersFormatted = ["Asset ID", "Serial Number", "Fault Description", "Fault Mid"];
                     rows = [];
                     indexToAdd = [7,6,15,16];
@@ -142,7 +142,7 @@ async function loadData(url, table){
 
             for(const cellText of row){
                 const cellEl = document.createElement("td");
-                cellEl .textContent = cellText;
+                cellEl.textContent = cellText;
 
                 rowEl.appendChild(cellEl);
             };
