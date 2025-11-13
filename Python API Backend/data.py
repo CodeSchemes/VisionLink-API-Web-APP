@@ -167,13 +167,12 @@ def pull_fault_codes(params='', headers=None):
     df = loads(df)
     conn.close()
     print(f"Pulled {len(df)} records from Faults")
-    return df
-    #return dumps(df, indent = 4)
+    #return df
+    return dumps(df, indent = 4)
     
 conn = http.client.HTTPSConnection('services.cat.com')
 try:
-    data = pull_fault_codes()
-    print(data)
+    
     
     conn.close()
 except Exception as e:

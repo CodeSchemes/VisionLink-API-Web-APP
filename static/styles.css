@@ -23,4 +23,10 @@ body .mb-3 label {
 }
 body .mb-3 button {
   margin: 10px auto;
+}
+body .tableFilter {
+  text-align: center;
+}
+body .tableFilter li {
+  margin: 0px auto;
 }/*# sourceMappingURL=styles.css.map */

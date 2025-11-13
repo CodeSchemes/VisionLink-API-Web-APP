@@ -20,3 +20,5 @@ def faults():
     data = pull_fault_codes()
     
     return data if isinstance(data, str) else str(data)
+
+

@@ -1,2 +1,4 @@
 Python API Backend/.env
 Python API Backend/__pycache__/data.cpython-313.pyc
+instance/database.db
+.vscode/settings.json

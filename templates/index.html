@@ -13,35 +13,45 @@
         <script src="../static/script.js" ></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="http://localhost:5000/">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" tabindex="1" href="http://localhost:5000/sign_in">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" onclick="loadData('http://localhost:5000/data', document.querySelector('table'))">Asset Summaries</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadData('http://localhost:5000/hours', document.querySelector('table'))">Asset Hours</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadData('http://localhost:5000/data/faults', document.querySelector('table'))">Asset Faults</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="1" ></a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </nav>
 
-        <h1>Fetched Data</h1>
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{url_for('index')}}">Home</a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" tabindex="1" href="{{url_for('login')}}">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="tableFilter">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid"> 
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">      
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" onclick="loadData('http://localhost:5000/data', document.querySelector('table'))">Asset Summaries</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="loadData('http://localhost:5000/hours', document.querySelector('table'))">Asset Hours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="loadData('http://localhost:5000/data/faults', document.querySelector('table'))">Asset Faults</a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="1" ></a>
+                        </li>-->
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+            
          <div class="table-responsive">
             <table class="table table-striped table-hover table-borderless table-primary align-middle">
                 <!-- Create a placeholder for when data is not shown or table is empty -->
