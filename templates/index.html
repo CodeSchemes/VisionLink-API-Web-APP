@@ -40,25 +40,29 @@
                 </div>
             </div>
         </nav>
-        <script>
-            let tableHead = table.querySelector("thead")
-            tableHead.innerHTML= "<tr></tr>"
-            if(!tableHead){
-                tableHead = document.createElement("thead")
-                table.insertBefore(tableHead, table.firstChild)
 
-                
-                const placeholder_head = documnet.createElement("th")
-
-                placeholder_head.textContent = "No data selected..."
-
-
-            }
-        </script>
         <h1>Fetched Data</h1>
          <div class="table-responsive">
             <table class="table table-striped table-hover table-borderless table-primary align-middle">
+                <!-- Create a placeholder for when data is not shown or table is empty -->
+                <script>
+                    table = document.querySelector("table")
+                    let tableHead = table.querySelector("thead")
+                    
+                    if(!tableHead){
+                        tableHead = document.createElement("thead")
+                        const rowEl = document.createElement("tr")
+                        table.insertBefore(tableHead, table.firstChild)
+                        tableHead.innerHTML= "<tr></tr>"
+                        const placeholder_head = document.createElement("th")
 
+                        placeholder_head.textContent = "No data selected..."
+                        
+                        rowEl.appendChild(placeholder_head)
+                        tableHead.querySelector("tr").appendChild(rowEl)
+                        
+                    }
+                </script>
             </table>
         </div>
         
