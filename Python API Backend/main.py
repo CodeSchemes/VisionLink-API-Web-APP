@@ -5,6 +5,9 @@ import pandas as pd
 from api_routes import api_routes
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, timezone
+from flask_wtf import wtforms
+from wtforms import StringField, PassowrdField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
 
 app = Flask(__name__, static_folder="../static", template_folder='../templates')
 CORS(app)
@@ -12,6 +15,7 @@ app.register_blueprint(api_routes, url_prefix="/data")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
+app.config['SECRET_KEY'] = 'placeholder' #this will be in the .env file later
 db = SQLAlchemy(app)
 
 
@@ -20,7 +24,8 @@ class user(db.Model):
     id = db.Column(db.Integer, primary_key = True) # Parameters = Column(*DATA TYPE*,*KEY TRUE/FALSE*)
     fName = db.Column(db.String(20), nullable = False)
     lName = db.Column(db.String(20), nullable = False)
-    username = db.Column(db.String(40), nullable = False)
+    username = db.Column(db.String(40), nullable = False, unique = True)
+    password = db.Column(db.String(80), nullable = False)
     dateAdded = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __Repr__(self) -> str:
