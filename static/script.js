@@ -69,21 +69,25 @@ async function loadData(url, table){
         let indexToAdd = [] 
             switch(url){
                 case "http://localhost:5000/data":
-                    headersFormatted = ["Asset ID", "Serial Number", "Hours"];
+                    headersFormatted = ["Asset ID", "Make", "Model", "Serial Number", "Hours"];
                     rows = [];
-                    indexToAdd = [15,14,24];
+                    indexToAdd = [15,11,13,14,24];
 
-                    
+
                     for (const row of data) {
                         const v0 = row[indexToAdd[0]];
                         const v1 = row[indexToAdd[1]];
                         const v2 = row[indexToAdd[2]];
+                        const v3 = row[indexToAdd[3]];
+                        const v4 = row[indexToAdd[4]];
                         rows.push([
                             v0 != null ? v0 : '---',
                             v1 != null ? v1 : '---',
-                            v2 != null ? v2 : 'Null'
+                            v2 != null ? v2 : 'Null',
+                            v3 != null ? v3 : '---',
+                            v4 != null ? v4 : 'Null'
                         ]);
-                    }  
+                    } 
                     dataFormatted = rows
                     console.log(rows)  
                     break;
@@ -106,6 +110,26 @@ async function loadData(url, table){
                             v3 != null ? v3 : 'Null'
                         ]);
                     }  
+                    dataFormatted = rows
+                    console.log(rows)  
+                    break;
+
+                case "http://localhost:5000/data/hours":
+                    headersFormatted = ["Asset ID", "Serial Number", "Hours"];
+                    rows = [];
+                    indexToAdd = [15,14,24];
+
+
+                    for (const row of data) {
+                        const v0 = row[indexToAdd[0]];
+                        const v1 = row[indexToAdd[1]];
+                        const v2 = row[indexToAdd[2]];
+                        rows.push([
+                            v0 != null ? v0 : '---',
+                            v1 != null ? v1 : '---',
+                            v2 != null ? v2 : 'Null',
+                        ]);
+                    } 
                     dataFormatted = rows
                     console.log(rows)  
                     break;

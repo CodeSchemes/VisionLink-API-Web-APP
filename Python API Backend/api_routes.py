@@ -22,3 +22,8 @@ def faults():
     return data if isinstance(data, str) else str(data)
 
 
+@api_routes.route('/hours', methods=['GET'])
+def hours():
+    data = pull_asset_summaries()
+    
+    return data if isinstance(data, str) else str(data)

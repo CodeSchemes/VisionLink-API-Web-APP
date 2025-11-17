@@ -3,20 +3,48 @@ body {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  min-width: 100px;
-  max-width: 1000px;
+  width: 1500px;
 }
 body h1 {
-  background-color: white;
+  background-color: #fff8e7;
   margin: 5px 0px;
+}
+body div.nav nav {
+  border: 1px solid;
+  margin: auto;
+}
+body .nav li {
+  background-color: #fff8e7;
+  border: 1px solid;
+  margin: 1px 10px;
+}
+body th, body td {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+body table {
+  width: 100%;
 }
 body table, body th, body td {
   border: 1px solid;
+  border-collapse: collapse;
+  text-align: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 10px;
+  table-layout: auto;
+}
+body th input {
+  text-align: center;
 }
 body .mb-3 {
   max-width: 500px;
   margin: 20px auto;
   padding: 20px 0px;
+  border: 1px solid;
+  padding: 10px 10px;
+  background-color: #fff8e7;
 }
 body .mb-3 label {
   margin: 10px 0px;
@@ -24,9 +52,17 @@ body .mb-3 label {
 body .mb-3 button {
   margin: 10px auto;
 }
-body .tableFilter {
+body div.tableFilter nav {
   text-align: center;
+  background: #fff8e7;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
+  border: 1px solid;
 }
-body .tableFilter li {
-  margin: 0px auto;
+body div.tableFilter nav li {
+  padding: 0px 10px;
+  margin: 0px 10px;
+  border: 1px solid;
+  border-collapse: separate;
 }/*# sourceMappingURL=styles.css.map */
