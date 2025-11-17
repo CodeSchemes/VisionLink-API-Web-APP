@@ -130,6 +130,36 @@ def admin():
         
         users = user.query.order_by(user.username).all()
         return render_template("adminPage.html", users = users)
+
+#------------------------------------------------------------------------------------------------------------
+#delete an item
+@app.route("/delete/<int:id>")
+def delete(id:int):
+    delete_user = user.query.get_or_404(id)
+    try:
+        db.session.delete(delete_user)
+        db.session.commit()
+        return redirect("/")
+    except Exception as e:
+        return f"ERROR: {e}"
+    
+#------------------------------------------------------------------------------------------------------------
+
+@app.route("/update/<int:id>", methods=["GET", "POST"])
+def edit(id:int):
+    User = user.query.get_or_404(id)
+    if request.method == "POST":
+        User.username = request.form['username']
+        new_password = request.form['password']
+        User.set_password(new_password)
+        try:
+            db.session.commit()
+            return redirect('/')
+        except Exception as e:
+            return f"ERROR {e}"
+        
+    else:
+        return render_template('edit.html', User=User)
 #------------------------------------------------------------------------------------------------------------Running Loop------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
