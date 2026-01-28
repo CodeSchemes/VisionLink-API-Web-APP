@@ -1,0 +1,19 @@
+{%extends "index.html"%}
+{%block body%}
+<div class="mb-3">
+    <form action="{{url_for('auth.signup_post')}}" method="POST">
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email Here" name="email" class="form-control" required>
+
+        <label for="username" class="form-label"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username Name Here" name="username" class="form-control" required>
+
+        <label for="password" class="form-label"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" class="form-control" required>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+    
+</div>
+{%endblock%}
