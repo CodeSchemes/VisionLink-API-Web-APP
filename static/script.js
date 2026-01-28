@@ -37,7 +37,35 @@ document.addEventListener("input", () => {
     })
 })
 
+
 async function loadData(url, table){
+    /**
+     * Loads data from a backend API and populates an HTML table with formatted results
+     * @async
+     * @function loadData
+     * @param {string} url - The backend API endpoint URL to fetch data from (e.g., "http://localhost:5000/data")
+     * @param {HTMLTableElement} table - The HTML table element to populate with the fetched data
+     * 
+     * @returns {Promise<void>}
+     * 
+     * @throws {Error} Throws an error if the fetch response is not ok or if JSON parsing fails
+     * 
+     * @description
+     * This function fetches data from a Python backend API, parses the response, and inserts
+     * formatted data into an HTML table. The table structure (headers and row data) is determined
+     * by the provided URL using a switch statement. If thead or tbody elements don't exist,
+     * they are created automatically.
+     * 
+     * @assumptions
+     * - The backend API returns a JSON response with two properties: `columns` (array) and `data` (array of arrays)
+     * - The `data` array contains rows where each row is an array of values indexed by column position
+     * - The table parameter is a valid HTMLTableElement or has similar querySelector capabilities
+     * - The URL parameter matches one of the cases defined in the switch statement; unmapped URLs will result in an empty table
+     * - Missing or null values in the data should be replaced with placeholder strings ('---' or 'Null')
+     * - The backend is running locally on http://localhost:5000
+     * - Search input fields will be added to each header for filtering functionality (handled elsewhere)
+     * - The provided indices in `indexToAdd` arrays correctly correspond to the column positions in the backend response
+     */
 
     try {
         let tableHead = table.querySelector("thead");
@@ -135,13 +163,6 @@ async function loadData(url, table){
                     break;
                 
             }
-            /*for(const header of columns){
-                for(const headerR of headersToRemove)
-                    if(header === headerR){
-                        let removalIndex = columns.indexOf(header)
-                        columns.splice(removalIndex, 1)
-                    };
-            };*/
         
 
         // Clear the table 
@@ -158,7 +179,7 @@ async function loadData(url, table){
             searchField.placeholder = headerText;
             headerEl.appendChild(searchField);
             tableHead.querySelector("tr").appendChild(headerEl);
-            //tableHead.querySelector("th").appendChild(inputField)
+            
         }
         //Populate rows of data
         for (const row of dataFormatted){
