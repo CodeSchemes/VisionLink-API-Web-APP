@@ -1,17 +1,29 @@
 {%extends "index.html"%}
 
 {%block body%}
-<div class="mb-3">
-    <form method="POST">
-        <label for="uname" class="form-label"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" class="form-control" required>
 
-        <label for="psw" class="form-label"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" class="form-control" required>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
 
-        <button type="submit">Login</button>
-    </form>
-    <a class="nav-link" tabindex="1" href="{{url_for('auth.signup')}}">Create An Account Here</a>
-</div>  
+<form method="POST" action="/login">
+    <div class="mb-3">
+        <form method="POST">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email Here" name="email" class="form-control" required>
+
+
+            <label for="password" class="form-label"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" class="form-control" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <a class="nav-link" tabindex="1" href="{{url_for('auth.signup')}}">Create An Account Here</a>
+    </div> 
+</form> 
 {%endblock%}
 

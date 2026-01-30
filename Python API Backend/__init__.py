@@ -2,9 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_cors import CORS
-
-# Initialize SQLAlchemy instance (outside create_app for import access)
-db = SQLAlchemy()
+from db import db
 
 def create_app():
     app = Flask(__name__, static_folder="../static", template_folder='../templates')
@@ -34,10 +32,17 @@ def create_app():
     
     from main import main as main_blueprint
     app.register_blueprint(main_blueprint)
-    
+
+    from api_routes import api_routes as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/data')
+    with app.app_context():
+        db.create_all()
+
     return app
 
 if __name__ == '__main__':
+    
+
     app = create_app()
     app.run(host='0.0.0.0', debug=True)
 

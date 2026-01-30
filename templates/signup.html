@@ -1,5 +1,15 @@
 {%extends "index.html"%}
 {%block body%}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+    </div>
+{% endif %}
+{% endwith %}
+<form method="POST" action="/signup">
+
 <div class="mb-3">
     <form action="{{url_for('auth.signup_post')}}" method="POST">
         <label for="email" class="form-label"><b>Email</b></label>
@@ -13,7 +23,6 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
         
-    </form>
-    
+    </form> 
 </div>
 {%endblock%}

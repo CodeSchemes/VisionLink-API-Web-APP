@@ -169,17 +169,14 @@ def pull_fault_codes(params='', headers=None):
     parsed = json.loads(raw_data)
 
     # Normalize into DataFrame
-    df = pd.json_normalize(parsed.get("assetSummaries", []), errors="ignore")
+    df = pd.json_normalize(parsed.get("faults", []), errors="ignore")
     end = perf_counter()
-    print(f"Summeries Execution time: {end - start:.2f} seconds")
+    print(f"Faults Execution time: {end - start:.2f} seconds")
     # Return JSON as string matching your original output format
     return json.dumps(json.loads(df.to_json(orient="split")), indent=4)
     
 conn = http.client.HTTPSConnection('services.cat.com')
 try:
-    
-    pull_asset_summaries()
-    pull_fault_codes()
     conn.close()
 except Exception as e:
     print(e)

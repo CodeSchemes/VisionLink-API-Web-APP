@@ -25,8 +25,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" tabindex="1" href="{{url_for('auth.login')}}">Login</a>
                             </li>
+
+                            {%if current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" tabindex="1" href="{{url_for('main.dashboard')}}">Dashboard</a>
+                                </li>
+                            {%endif%}
+
                             {%block adminNav%}
                             {%endblock%}
+
                             <li class="nav-item">
                                 <a class="nav-link" tabindex="1" href="{{url_for('auth.logout')}}">Logout</a>
                             </li>
