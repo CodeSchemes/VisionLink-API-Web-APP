@@ -1,0 +1,28 @@
+{%extends 'index.html'%}
+
+
+{%block body%}
+    <div class="content">
+        <h1>User Info</h1>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+            {%for user in users%}
+            <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    {%if not current_user.username == user.username%}
+                    <a href="/delete/{{user.id}}">Delete</a>
+                    <br />
+                    {%endif%}
+                    <a href="/update/{{user.id}}">Update</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+        
+    </div>
+{%endblock%}

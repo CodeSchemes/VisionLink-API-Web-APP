@@ -35,10 +35,12 @@ def signup_post():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    user = User.query.filter_by(email=email).first()
 
-    if user:
+    if User.query.filter_by(email=email).first():
         flash('Email address already exists')
+        return redirect(url_for('auth.signup'))
+    elif User.query.filter_by(username=username).first():
+        flash('Username already exists')
         return redirect(url_for('auth.signup'))
 
     new_user = User(email=email, username=username, password=generate_password_hash(password))
@@ -52,3 +54,37 @@ def signup_post():
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
+
+@auth.route('/delete/<int:user_id>')
+@login_required
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted successfully.')
+    else:
+        flash('User not found.')
+    return redirect(url_for('main.admin_dashboard'))
+
+@auth.route('/update/<int:user_id>', methods=['GET', 'POST'])
+@login_required
+def update_user(user_id):
+    user = User.query.get(user_id)
+    if request.method == 'POST':
+        new_email = request.form.get('email')
+        new_username = request.form.get('username')
+        new_password = request.form.get('password')
+
+        if new_email:
+            user.email = new_email
+        if new_username:
+            user.username = new_username
+        if new_password:
+            user.password = generate_password_hash(new_password)
+
+        db.session.commit()
+        flash('User updated successfully.')
+        return redirect(url_for('main.admin_dashboard'))
+
+    return render_template('update_user.html', user=user)
